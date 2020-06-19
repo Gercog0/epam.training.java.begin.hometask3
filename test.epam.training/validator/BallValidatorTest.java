@@ -32,5 +32,4 @@ public class BallValidatorTest {
     public void tierDown(){
         ballValidator = null;
     }
-
 }

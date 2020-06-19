@@ -39,6 +39,4 @@ public class BasketValidator {
     private boolean isWeightValid(double weight) {
         return weight > 0 && weight <= MAXIMUM_AVAILABLE_WEIGHT_BASKET;
     }
-
-
 }

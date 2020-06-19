@@ -62,23 +62,23 @@ public class BasketService {
             currentWeight += ball.getWeight();
         }
         return currentWeight;
+
     }
 
-    public void loadBasket(Basket basket, Ball... balls) throws UserException {
+    public int loadBasket(Basket basket, Ball... balls) throws UserException {
         if (basket == null || balls == null) {
             throw new UserException("Incorrect data...");
         }
         BasketValidator validator = new BasketValidator();
-
-        int currentVolume = calculateCurrentVolume(basket);
-        double currentWeight = calculateCurrentWeight(basket);
-
+        int quantityPlacedBalls = 0;
         for (Ball ball : balls) {
             if (validator.isPossibleAddBall(basket, ball)) {
                 basket.putBall(ball);
+                quantityPlacedBalls++;
             } else {
                 break;
             }
         }
+        return quantityPlacedBalls;
     }
 }

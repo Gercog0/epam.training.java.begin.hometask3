@@ -6,7 +6,6 @@ import by.training.homework3.validator.BallValidator;
 
 import java.util.Random;
 
-
 public class BallCreator {
     private static final double MAXIMUM_WEIGHT_BALL = 90;
     private static final double MINIMAL_WEIGHT_BALL = 1;
@@ -21,16 +20,6 @@ public class BallCreator {
         return new Ball(color, size, weight);
     }
 
-    public Ball generateRandomBall() throws UserException {
-        Ball.Color color = Ball.Color.values()[
-                new Random().nextInt(Ball.Color.values().length)];
-        Ball.Size size = Ball.Size.values()[
-                new Random().nextInt(Ball.Size.values().length)];
-        double weight = MINIMAL_WEIGHT_BALL + (int) (Math.random() * MAXIMUM_WEIGHT_BALL);
-
-        return createBall(color, size, weight);
-    }
-
     public Ball[] generateBallArray(int quantityBalls) throws UserException {
         if (quantityBalls < 0) {
             throw new UserException("Incorrect data...");
@@ -41,5 +30,15 @@ public class BallCreator {
             ballArray[i] = generateRandomBall();
         }
         return ballArray;
+    }
+
+    private Ball generateRandomBall() throws UserException {
+        Ball.Color color = Ball.Color.values()[
+                new Random().nextInt(Ball.Color.values().length)];
+        Ball.Size size = Ball.Size.values()[
+                new Random().nextInt(Ball.Size.values().length)];
+        double weight = MINIMAL_WEIGHT_BALL + (int) (Math.random() * MAXIMUM_WEIGHT_BALL);
+
+        return createBall(color, size, weight);
     }
 }
